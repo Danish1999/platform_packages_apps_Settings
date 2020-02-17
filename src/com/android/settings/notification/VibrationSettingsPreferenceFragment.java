@@ -159,7 +159,6 @@ public class VibrationSettingsPreferenceFragment extends DashboardFragment
     private SettingsObserver mSettingObserver;
     private final Handler mH = new Handler();
 
-    private boolean mHasOnePlusHaptics;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -168,9 +167,6 @@ public class VibrationSettingsPreferenceFragment extends DashboardFragment
         mContext = getContext();
         mContentResolver = mContext.getContentResolver();
         mSettingObserver = new SettingsObserver(mH);
-
-        mHasOnePlusHaptics = getResources().getBoolean(
-            com.android.internal.R.bool.config_hasOnePlusHapticMotor);
 
         mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
         if (mVibrator != null && !mVibrator.hasVibrator()) {
@@ -187,16 +183,10 @@ public class VibrationSettingsPreferenceFragment extends DashboardFragment
             mRadioPreferences[i].setOnPreferenceClickListener(this);
         }
 
-        if (mHasOnePlusHaptics) {
-            mRingerVibrationIntensity.setOnPreferenceClickListener(this);
-            mNotifVibrationIntensity.setOnPreferenceClickListener(this);
-            updateIntensityText();
-        } else {
             mRingerVibrationIntensity.setEnabled(false);
             mRingerVibrationIntensity.setVisible(false);
             mNotifVibrationIntensity.setEnabled(false);
             mNotifVibrationIntensity.setVisible(false);
-        }
 
         mIncallFeedback.setOnPreferenceClickListener(this);
 
@@ -205,28 +195,6 @@ public class VibrationSettingsPreferenceFragment extends DashboardFragment
         final int currentPattern = Settings.System.getIntForUser(mContentResolver, RINGTONE_VIBRATION_PATTERN, 0, UserHandle.USER_CURRENT);
 
         updateVibrationPattern(currentPattern);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mHasOnePlusHaptics) {
-            mContentResolver.unregisterContentObserver(mSettingObserver);
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (mHasOnePlusHaptics) {
-            mContentResolver.registerContentObserver(
-                Settings.System.getUriFor(Settings.System.RING_VIBRATION_INTENSITY),
-                true, mSettingObserver, UserHandle.USER_CURRENT);
-
-            mContentResolver.registerContentObserver(
-                Settings.System.getUriFor(Settings.System.NOTIFICATION_VIBRATION_INTENSITY),
-                true, mSettingObserver, UserHandle.USER_CURRENT);
-        }
     }
 
     @Override
