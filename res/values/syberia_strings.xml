@@ -313,6 +313,8 @@
     <string name="themeroom_summary">accent-gradient theming</string>
     <string name="accent_color">Accent picker</string>
     <string name="accent_summary">System wide accent maker</string>
+    <string name="theme_option_reset_title">Reset Theme Options</string>
+    <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
 
     <!-- Themes -->
     <string name="theme_type_title">System theme</string>
