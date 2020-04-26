@@ -25,4 +25,7 @@
     <style name="CustomPreference" parent="Preference.Material">
         <item name="allowDividerAbove">false</item>
     </style>
+    <declare-styleable name="Themes">
+        <attr name="waveViewStyle" format="reference"/>
+    </declare-styleable>
 </resources>
