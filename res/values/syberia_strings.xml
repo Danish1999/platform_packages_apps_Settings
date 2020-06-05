@@ -315,7 +315,7 @@
     <string name="accent_summary">System wide accent maker</string>
     <string name="theme_option_reset_title">Reset Theme Options</string>
     <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
-
+    <string name="reset">Reset</string>
     <!-- Themes -->
     <string name="theme_type_title">System theme</string>
     <string name="theme_type_summary">Select theme</string>

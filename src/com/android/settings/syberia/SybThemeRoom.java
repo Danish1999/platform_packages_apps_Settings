@@ -38,12 +38,12 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
 
-import com.android.internal.util.xtended.ThemesUtils;
-import com.android.internal.util.xtended.XtendedUtils;
+import com.android.internal.util.syberia.ThemesUtils;
+import com.android.internal.util.syberia.SyberiaUtils;
 import com.android.settings.SettingsPreferenceFragment;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class XThemeRoom extends SettingsPreferenceFragment implements
+public class SybThemeRoom extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String ACCENT_COLOR = "accent_color";
@@ -179,17 +179,17 @@ public class XThemeRoom extends SettingsPreferenceFragment implements
     private void setupThemeSwitchPref() {
         mThemeSwitch = (ListPreference) findPreference(PREF_THEME_SWITCH);
         mThemeSwitch.setOnPreferenceChangeListener(this);
-        if (XtendedUtils.isThemeEnabled("com.android.theme.darkgrey.system")) {
+        if (SyberiaUtils.isThemeEnabled("com.android.theme.darkgrey.system")) {
             mThemeSwitch.setValue("7");
-        } else if (XtendedUtils.isThemeEnabled("com.android.theme.pitchblack.system")) {
+        } else if (SyberiaUtils.isThemeEnabled("com.android.theme.pitchblack.system")) {
             mThemeSwitch.setValue("6");
-        } else if (XtendedUtils.isThemeEnabled("com.android.theme.materialocean.system")) {
+        } else if (SyberiaUtils.isThemeEnabled("com.android.theme.materialocean.system")) {
             mThemeSwitch.setValue("8");
-        } else if (XtendedUtils.isThemeEnabled("com.android.theme.chocox.system")) {
+        } else if (SyberiaUtils.isThemeEnabled("com.android.theme.chocox.system")) {
             mThemeSwitch.setValue("5");
-        } else if (XtendedUtils.isThemeEnabled("com.android.theme.bakedgreen.system")) {
+        } else if (SyberiaUtils.isThemeEnabled("com.android.theme.bakedgreen.system")) {
             mThemeSwitch.setValue("4");
-        } else if (XtendedUtils.isThemeEnabled("com.android.theme.solarizeddark.system")) {
+        } else if (SyberiaUtils.isThemeEnabled("com.android.theme.solarizeddark.system")) {
             mThemeSwitch.setValue("3");
         } else if (mUiModeManager.getNightMode() == UiModeManager.MODE_NIGHT_YES) {
             mThemeSwitch.setValue("2");
